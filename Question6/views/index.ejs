@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Products</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Products</h1>
+    <a href="/products/add">Add New Product</a>
+    <ul>
+      <% products.forEach(product => { %>
+      <li>
+        <h2><%= product.name %></h2>
+        <p><%= product.description %></p>
+        <p>Category: <%= product.category.name %></p>
+        <div class="product-images">
+          <% product.images.forEach(image => { %>
+          <img src="<%= image %>" alt="Product Image" />
+          <% }); %>
+        </div>
+        <a href="/products/edit/<%= product._id %>">Edit</a>
+        <a href="/products/delete/<%= product._id %>">Delete</a>
+      </li>
+      <% }); %>
+    </ul>
+    <a href="/categories">Manage Categories</a>
+  </body>
+</html>
